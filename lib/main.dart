@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,25 +13,60 @@ class MyApp extends StatelessWidget {
     
     return MaterialApp( // material 테마 가능 위젯
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title: Text('앱임'),
-        ),
-        body: Align(
-          alignment: Alignment.bottomCenter,
-          child: Container( // or Row
-            width:  50, height: 50,
-            margin: EdgeInsets.fromLTRB(0,30,0,0),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.black)
+        appBar: AppBar( // 안에 넣을 수 있는 것들
+          // 컬러
+          backgroundColor: Colors.white,
+          // 왼쪽제목
+          title: Text('금호동3가', style: TextStyle(color: Colors.black, fontWeight: FontWeight.w300)),
+
+          // 왼쪽에 넣을 아이콘
+          // leading: Icon(Icons.),
+          // 우측 아이콘
+          actions: [
+            IconButton(
+                onPressed: (){},
+                icon: Icon(Icons.search, color: Colors.black,)
             ),
-            child: Text('ddd'),
-          ),
+            IconButton(
+                onPressed: (){},
+                icon: Icon(Icons.menu, color: Colors.black,)
+            ),
+            IconButton(
+                onPressed: (){},
+                icon: Icon(Icons.doorbell, color: Colors.black,)
+            )
+          ],
         ),
-
-
+        body: Container(
+          height: 150,
+          padding: EdgeInsets.all(10),
+          child: Row(
+            children: [
+              Flexible(
+                child: Image.asset('assets/cannon.PNG'), flex:5
+              ),
+              Expanded(
+                // width: 300, // 퍼센티지로 넓이 설정
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('카메라 판매', ),
+                    Text('금호동 3가'),
+                    Text('7000월'),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Icon(Icons.favorite),
+                        Text('4')
+                      ],
+                    )
+                  ],
+                )
+              )
+            ],
+          ),
+        )
       )
     );
-
   }
 }
